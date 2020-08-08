@@ -1,7 +1,27 @@
-{% extends '_base.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}About{% endblock title %}
+
+{% block left_item %}
+<div class="col-lg-2">
+    <h1 class="my-2">Hi, {{request.user}}</h1>
+</div>
+{% endblock left_item %}
 
 {% block content %}
-<h1>About Page</h1>
+<div class="col-lg-4 col-md-6 mb-4 mx-auto">
+    <div>
+        <h2 class="">About Me</h2>
+        <div class="card" style="">
+            <img class="card-img-top" src="{% static 'images/surdy_a.png' %}" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">Ajayi Sodiq A.</h4>
+                <p class="card-text">FullStack Developer</p>
+                <a href="https://github.com/Surdy-A" class="btn btn-primary">Github</a>
+                <a href="http://sodeeqajayi.pythonanywhere.com/" class="btn btn-primary">Portfolio</a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
 {% endblock content %}
