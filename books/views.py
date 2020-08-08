@@ -113,8 +113,7 @@ class SearchResultsListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         return Book.objects.filter(
-            Q(title__icontains=query) | Q(author__icontains=query)
-        )
+            Q(title__icontains=query) | Q(description__icontains=query))
 
 
 class ReviewViewForm(FormView):
