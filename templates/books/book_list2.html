@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block title %}Books{% endblock title %}
+
+{% block content %}
+  {% for book in book_list %}
+    <div>
+      <p style="margin: 100px;"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
+      <h2><img src="{{book.cover.url}}" alt="" srcset=""></h2>
+    </div>
+  {% endfor %}
+{% endblock content %}

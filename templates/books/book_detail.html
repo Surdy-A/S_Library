@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block left_item %}
+<div class="col-lg-2">
+  <h2 class="my-4">Hi, {{request.user}}</h2>
+
+
+
+  <!-- <a href="#demo" class="btn btn-primary" data-toggle="collapse"></a>
+  <div id="demo" class="collapse">
+      <div class="list-group" {% if not category %} {% endif %} class="nav-item active">
+
+          <a href="{% url 'books:book_list' %}" class="list-group-item" {% if not category %} aria-selected="true"
+              {% else %} aria-selected="" {% endif %}>All</a>
+      </div>
+      {% for c in categories %}
+
+      <div class="list-group" {% if category.slug == c.slug %} {% endif %} class="active">
+          <a href="{{c.get_absolute_url}}" class="list-group-item">{{c.category}}</a>
+      </div>
+      {% endfor %}
+
+  </div> -->
+
+</div>
+{% endblock left_item %}
+  
+  <!-- Page Content -->
+
+     
+
+{% block content %}
+  <div class="card mt-4" style="width: 900px !important;">
+    <img class="card-img-top img-fluid" src="{{book.image_thumbnail.url}}" alt="">
+    <div class="card-body" style="width: 900px !important;">
+      <h3 class="card-title" >{{book.title}}</h3>
+      <h4>Author: <a href="{% url 'books:book_author' book.author.slug %}">{{book.author}}</a></h4>
+      <h4>Publisher: <a href="{% url 'books:book_publisher' book.publisher.slug %}">{{book.publisher}}</a></h4>
+      <p class="card-text">Description: {{book.description}}</p>
+      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+      4.0 stars
+    </div>
+  </div>
+  <!-- /.card -->
+<hr>
+  <div class="card card-outline-secondary my-4" style="max-width: 900px !important;">
+    <div class="card-header">
+      Book Reviews
+    </div>
+    <div class="card-body">
+      
+      {% for review in book.reviews.all %}
+      <p>{{review.review}}</p>
+      <small class="text-muted">Posted by {{review.author}}</small>
+      <hr>
+      {% endfor %}
+      <form  method="post">
+        {{comment_form.as_p}}
+        {% csrf_token %}
+      <a type="submit" value="Save" class="btn btn-success" href=" {% url 'books:review' %} "> Leave a Review</a>
+
+      </form>
+
+    </div>
+  </div>
+  <!-- /.card -->
+{% endblock content %}
+  
