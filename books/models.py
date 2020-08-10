@@ -14,6 +14,7 @@ class Book(models.Model):
         default=uuid.uuid4,
         editable=False)
     title = models.CharField(max_length=200)
+    ebook = models.FileField(upload_to='books', default='')
     author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='shows', default='')
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     images = models.ImageField(upload_to='images/', blank=False)

@@ -40,7 +40,13 @@
       <p class="card-text">Description: {{book.description}}</p>
       <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
       4.0 stars
+      <div>
+      <button type="button" class="btn btn-outline-primary"><a href="{{book.ebook.url}}">Download</a></button>
+      <button type="button" class="btn btn-outline-info"><a href="{% url 'books:preview' book.pk %}">Read Online</a></button>
+      </div>
+      
     </div>
+
   </div>
   <!-- /.card -->
 <hr>
@@ -58,7 +64,7 @@
       <form  method="post">
         {{comment_form.as_p}}
         {% csrf_token %}
-      <a type="submit" value="Save" class="btn btn-success" href=" {% url 'books:review' %} "> Leave a Review</a>
+      <a type="submit" value="Save" class="btn btn-success" href=""> Leave a Review</a>
 
       </form>
 

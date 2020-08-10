@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     PermissionRequiredMixin
 )
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormView
 from .models import Book, Category, Carousel, Author, Publisher
 from .forms import ReviewForm 
@@ -144,3 +144,8 @@ def CommentView(request, book):
 
     return render(request, 'books/book_detail.html', {'comments_form': comments_form, 'review':review})
 
+
+
+class PreviewView(DetailView):
+    model = Book
+    template_name = "books/preview.html"

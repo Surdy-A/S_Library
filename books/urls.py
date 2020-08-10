@@ -4,7 +4,8 @@ from .views import (
     SearchResultsListView, 
     category, author,
      publisher, 
-     ReviewViewForm
+     ReviewViewForm,
+     PreviewView
      ) 
 
 app_name = 'books'
@@ -17,5 +18,6 @@ urlpatterns = [
     path('author/<slug:author_slug>', author, name='book_author'),
     path('publisher/<slug:publisher_slug>', publisher, name='book_publisher'),
     path('review', ReviewViewForm.as_view(), name='review'),
-     
+    path('preview/<uuid:pk>/', PreviewView.as_view(), name="preview")
+
 ]
